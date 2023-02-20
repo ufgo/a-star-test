@@ -9,28 +9,30 @@ function init(self)
 	astar.setup(map_width, map_height, direction, allocate, typical_adjacent, cache)
 
 	local world = {
-		2 ,2 ,0 ,2 ,2,
-		0 ,0 ,1 ,2 ,2,
-		0 ,0 ,2 ,0 ,0,
-		0 ,2 ,2 ,2 ,2,
-		2 ,1 ,1 ,0 ,1
+		2,2,2,2,2,
+		2,2,2,2,2,
+		2,2,2,2,2,
+		2,2,2,2,2,
+		2,2,2,2,2,
 	}
 
 	astar.set_map(world)
-	local costs = {
-		[2] = {
+	local costs = {}
+
+	for i = 1, 25 do
+		costs[i]={
 			1.0, -- E
 			1.0, -- N
 			1.0, -- W
 			1.0, -- S
 		}
-	}
+	end
 
 	astar.set_costs(costs)
 
-	local start_x = 5
-	local start_y = 1
-	local max_cost = 3.0 -- near
+	local start_x = 4
+	local start_y = 0
+	local max_cost = 1.0 -- near
 
 	local near_result, near_size, nears = astar.solve_near(start_x, start_y, max_cost)
 
